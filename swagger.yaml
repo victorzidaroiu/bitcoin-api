@@ -1,0 +1,37 @@
+swagger: '2.0'
+info:
+  description: This API provides information on the last N bitcoin blocks.
+  version: 1.0.0
+  title: Bitcoin API
+  contact:
+    email: victor@zidaroiu.com
+host: example.com
+basePath: /api/v1
+tags:
+  - name: bitcoin
+    description: Bitcoin API
+schemes:
+  - http
+paths:
+  /blocks/{n}:
+    get:
+      tags:
+        - blocks
+      summary: Get information on the last N blocks
+      description: ''
+      operationId: getBlocks
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          type: integer
+          name: n
+          description: The number if blocks to get
+          required: true
+      responses:
+        200:
+          description: Successful operation
+        400:
+          description: Number of blocks requested is larger than the maximum allowed
+        500:
+          description: Internal Server Error
